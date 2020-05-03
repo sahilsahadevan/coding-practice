@@ -1,6 +1,5 @@
 package com.example.sahil.practice.string_manipulation;
 
-import com.example.sahil.practice.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

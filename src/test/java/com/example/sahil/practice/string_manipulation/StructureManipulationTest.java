@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.ByteArrayInputStream;
-
 public class StructureManipulationTest {
     long time;
 
@@ -29,41 +27,6 @@ public class StructureManipulationTest {
         executionTime(time);
 
     }
-
-    @Test
-    public void printIncrementalPyramidsWithUserInputs() {
-        //simulate userInput (new Scanner(System.in))
-        System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidOneIncremental();
-        System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidTwoIncremental();
-        System.setIn(new ByteArrayInputStream("9".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidThreeIncremental();
-        System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidFourIncremental();
-        //reset SystemInput for fresh inputs [Optional]
-        System.setIn(System.in);
-
-    }
-
-
-    @Test
-    public void printDecrementalPyramidsWithUserInputs() {
-        //simulate userInput (new Scanner(System.in))
-        System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidOneDecremental();
-        System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidTwoDecremental();
-        System.setIn(new ByteArrayInputStream("7".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidThreeDecremental();
-        System.setIn(new ByteArrayInputStream("7".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidFourDecremental();
-        //reset SystemInput for fresh inputs [Optional]
-        System.setIn(System.in);
-
-    }
-
-
 
     // FOR TIME TRACKING
     public void startTime() {
