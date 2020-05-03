@@ -1,12 +1,8 @@
 package com.example.sahil.practice.string_manipulation;
 
 import com.example.sahil.practice.util.CommonUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class PrintEquilateralPyramids {
-
-    private static final Logger log = LoggerFactory.getLogger(PrintEquilateralPyramids.class);
 
     /**
      * QUESTION : HOW TO PRINT PYRAMIDS
@@ -115,8 +111,9 @@ public class PrintEquilateralPyramids {
             for (int j = 1; j <= rowCount; j++) {
                 System.out.print(j + " ");
             }
-            for (int j = 1; j <= rowCount && (rowCount - j) > 0; j++) {
-                System.out.print(rowCount - j + " ");
+
+            for (int j = rowCount - 1; j > 0; j--) {
+                System.out.print(j + " ");
             }
             System.out.println();
             rowCount++;
@@ -141,7 +138,7 @@ public class PrintEquilateralPyramids {
                 System.out.print("  ");      //NOTE TWO SPACES ADDED HERE
             }
             for (int j = 0; j < rowCount; j++) {
-                                                                                                                                                                                                                                                                                            System.out.print((rows - j) + " ");
+                System.out.print((rows - j) + " ");
             }
             for (int j = 1; j < rowCount; j++) {
                 System.out.print((i + j) + " ");
@@ -172,8 +169,8 @@ public class PrintEquilateralPyramids {
             for (int j = 0; j < rowCount; j++) {
                 System.out.print((i + j) + " ");
             }
-            for (int j = 1; j < rowCount; j++) {
-                System.out.print((rows - j) + " ");
+            for (int j = rows - 1; j >= i; j--) {
+                System.out.print(j + " ");
             }
             System.out.println();
             rowCount++;
