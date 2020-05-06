@@ -28,6 +28,19 @@ public class StructureManipulationTest {
 
     }
 
+
+    @Test
+    public void test(){
+
+        startTime();
+        StructureManipulation.removeAllWhiteSpaceUsingRegex("         THis had a lot of un even w   hit es paces         ");
+        executionTime(time);
+        startTime();
+        StructureManipulation.removeAllWhiteSpaceUsingLoopIterations("         THis had a lot of un even w   hit es paces         ");
+        executionTime(time);
+    }
+
+
     // FOR TIME TRACKING
     public void startTime() {
         time = System.currentTimeMillis();

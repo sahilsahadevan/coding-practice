@@ -29,16 +29,6 @@ public class PrintEquilateralPyramidsTest {
     }
 
     @Test
-    public void test() {
-        //simulate userInput (new Scanner(System.in))
-        System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintEquilateralPyramids.printReversedEquilateralMirroredNumberPyramidIncrementalOne();
-        //reset SystemInput for fresh inputs [Optional]
-        System.setIn(System.in);
-
-    }
-
-    @Test
     public void printStarPatternPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
@@ -64,7 +54,15 @@ public class PrintEquilateralPyramidsTest {
 
     }
 
+    @Test
+    public void test() {
+        //simulate userInput (new Scanner(System.in))
+        System.setIn(new ByteArrayInputStream("5".getBytes()));
+        PrintEquilateralPyramids.printEquilateralMirroredNumberPyramidDecrementalTwo();
+        //reset SystemInput for fresh inputs [Optional]
+        System.setIn(System.in);
 
+    }
 
     // FOR TIME TRACKING
     public void startTime() {

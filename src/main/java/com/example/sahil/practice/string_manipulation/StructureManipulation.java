@@ -7,8 +7,11 @@ public class StructureManipulation {
 
     private static final Logger log = LoggerFactory.getLogger(StructureManipulation.class);
 
-    /**
-     * QUESTION : HOW TO REVERSE A STRING IN JAVA
+
+//================= QUESTION : HOW TO REVERSE A STRING IN JAVA ============================
+    /*
+        Input = "Sahil Sahadevan"
+        output = "navedahas lihas"
      */
 
     //Using Recursive Method 1 : ExecutionTime is 10-15 milliseconds
@@ -53,5 +56,31 @@ public class StructureManipulation {
         log.info("[reverseUsingStringBuilder] input is {} reversed value is =>{}",
                 input, inputStringBuilder);
         return new String(inputStringBuilder);
+    }
+
+
+//================= QUESTION : HOW TO REMOVE WHITESPEACES ============================
+    /*
+        Input = "         THis had a lot of un even w   hit es paces         "
+        output = "THishadalotofunevenwhitespaces"
+     */
+
+    //Using Iteration Loop : ExecutionTime is around 1 millisecond. This internally uses reverseUsingLoopIteration
+    public static void removeAllWhiteSpaceUsingLoopIterations(String input) {
+        char[] inputChar = input.toCharArray();
+        char[] knitChar = new char[inputChar.length];
+        for (int i = 0; i < inputChar.length; i++) {
+            if (inputChar[i] != ' ') {
+                knitChar[i] = inputChar[i];
+            }
+        }
+        System.out.println(String.valueOf(knitChar));
+    }
+
+    //Using ReplaceAll : ExecutionTime is around 1 millisecond, but this is slightly faster than iteration
+    public static void removeAllWhiteSpaceUsingRegex(String input) {
+        if (input != null) {
+            System.out.println(input.replaceAll(" ",""));
+        }
     }
 }
