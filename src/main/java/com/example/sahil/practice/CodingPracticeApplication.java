@@ -1,6 +1,6 @@
 package com.example.sahil.practice;
 
-import com.example.sahil.practice.string_manipulation.PrintEquilateralPyramids;
+import com.example.sahil.practice.string_manipulation.PrintPyramids;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +14,6 @@ public class CodingPracticeApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        PrintEquilateralPyramids.printEquilateralNumberPyramidIncrementalOne();
+        PrintPyramids.printEquilateralNumberPyramidIncrementalOne();
     }
 }

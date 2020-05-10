@@ -2,7 +2,7 @@ package com.example.sahil.practice.string_manipulation;
 
 import com.example.sahil.practice.util.CommonUtil;
 
-public class PrintEquilateralPyramids {
+public class PrintPyramids {
 
     /**
      * QUESTION : HOW TO PRINT PYRAMIDS

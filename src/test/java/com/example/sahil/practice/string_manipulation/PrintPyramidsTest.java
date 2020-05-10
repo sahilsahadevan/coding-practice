@@ -7,22 +7,22 @@ import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 
-public class PrintEquilateralPyramidsTest {
+public class PrintPyramidsTest {
     long time;
 
-    private final Logger log = LoggerFactory.getLogger(PrintEquilateralPyramidsTest.class);
+    private final Logger log = LoggerFactory.getLogger(PrintPyramidsTest.class);
 
     @Test
     public void printIncrementalNumberPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidIncrementalOne();
+        PrintPyramids.printEquilateralNumberPyramidIncrementalOne();
         System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidIncrementalTwo();
+        PrintPyramids.printEquilateralNumberPyramidIncrementalTwo();
         System.setIn(new ByteArrayInputStream("9".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidIncrementalFour();
+        PrintPyramids.printEquilateralNumberPyramidIncrementalFour();
         System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidIncrementalFive();
+        PrintPyramids.printEquilateralNumberPyramidIncrementalFive();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
@@ -32,7 +32,7 @@ public class PrintEquilateralPyramidsTest {
     public void printStarPatternPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintEquilateralPyramids.printEquilateralStarPatternPyramid();
+        PrintPyramids.printEquilateralStarPatternPyramid();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
@@ -42,13 +42,13 @@ public class PrintEquilateralPyramidsTest {
     public void printDecrementalNumberPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidDecrementalOne();
+        PrintPyramids.printEquilateralNumberPyramidDecrementalOne();
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidDecrementalTwo();
+        PrintPyramids.printEquilateralNumberPyramidDecrementalTwo();
         System.setIn(new ByteArrayInputStream("7".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidDecrementalFour();
+        PrintPyramids.printEquilateralNumberPyramidDecrementalFour();
         System.setIn(new ByteArrayInputStream("7".getBytes()));
-        PrintEquilateralPyramids.printEquilateralNumberPyramidDecrementalFive();
+        PrintPyramids.printEquilateralNumberPyramidDecrementalFive();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
@@ -58,7 +58,7 @@ public class PrintEquilateralPyramidsTest {
     public void test() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintEquilateralPyramids.printEquilateralMirroredNumberPyramidDecrementalTwo();
+        PrintPyramids.printEquilateralMirroredNumberPyramidDecrementalTwo();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
