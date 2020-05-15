@@ -11,8 +11,6 @@ public class ArrayManipulation {
     private static final Logger log = LoggerFactory.getLogger(ArrayManipulation.class);
 
 
-
-
 // ================= How do you check the equality of two arrays in java? ====================================
 
     // Check if array 1 and array 2 has same entries regardless of the position (size must be same)==========
@@ -186,7 +184,7 @@ public class ArrayManipulation {
         }
     }
 
-    // Matric Additions
+    // Matrix Additions
     public static int[][] addMatrix(int[][] twoDimMatrix1, int[][] twoDimMatrix2) {
         int m1RowCount = twoDimMatrix1.length;
         int m1ColumnCount = twoDimMatrix1[1].length;
@@ -207,7 +205,7 @@ public class ArrayManipulation {
         return result;
     }
 
-    // Matric Subtractions
+    // Matrix Subtractions
     public static int[][] subtractMatrix(int[][] twoDimMatrix1, int[][] twoDimMatrix2) {
         int m1RowCount = twoDimMatrix1.length;
         int m1ColumnCount = twoDimMatrix1[1].length;
@@ -256,7 +254,7 @@ public class ArrayManipulation {
             for (int j = 0; j < m2ColumnCount; j++) { //note: m1ColumnCount == m2RowCount
                 int value = 0;
                 for (int k = 0; k < m1ColumnCount; k++) {
-                   value  = twoDimMatrix1[i][k] * twoDimMatrix2[k][j];
+                    value = twoDimMatrix1[i][k] * twoDimMatrix2[k][j];
                 }
                 result[i][j] = value;
             }
@@ -264,9 +262,73 @@ public class ArrayManipulation {
         return result;
     }
 
+//=================== How to find all pairs of elements in an array whose sum is equal to given number? ===========
+    //For example, if {4, 5, 7, 11, 9, 13, 8, 12} is an array and 20 is the given number,
+    // then you have to find all pairs of elements in this array whose sum must be 20.
+    // In this example, (9, 11), (7, 13) and (8, 12) are such pairs whose sum is 20
+
+    public static int[][] getSumPairOfGivenNumber(int[] inputArr, int expectedTotal) {
+        int[][] pairs = new int[inputArr.length / 2][2];
+        int x = 0;
+        for (int i = 0; i < inputArr.length; i++) {
+            for (int j = i + 1; j < inputArr.length; j++) {
+                if (inputArr[i] + inputArr[j] == expectedTotal) {
+                    pairs[x][0] = inputArr[i];
+                    pairs[x][1] = inputArr[j];
+                    x++;
+                }
+            }
+        }
+        return pairs;
+    }
+
+//=================== How to find continuous sub array whose sum is equal to given number ===========
+    //For example, If {12, 5, 31, 9, 21, 8} is the given array and 45 is the given number,
+    // then you have to find continuous sub array in this array such that whose elements add up to 45.
+    // In this case, {5, 31, 9} is such sub array whose elements add up to 45
+
+    public static List<List<Integer>> getSubArraySumPairOfGivenNumber(int[] inputArr, int expectedTotal) {
+        List<List<Integer>> continuousSubArrayList = new ArrayList<>();
+        for (int i = 0; i < inputArr.length; i++) {
+            int sum = 0;
+            int j = i;
+
+            while (j < inputArr.length) {
+                sum = sum + inputArr[j];
+                if (sum == expectedTotal) {
+                    List<Integer> subArray = new ArrayList<>();
+                    for (int k = i; k <= j; k++) {
+                        subArray.add(inputArr[k]);
+                    }
+                    continuousSubArrayList.add(subArray);
+                    break;
+                }
+                j++;
+            }
+        }
+        return continuousSubArrayList;
+    }
+
+//=================== How to remove duplicate elements from ArrayList in java ===========
+
+    //mutating method -> modify the orginal input object arrayList
+    public static void removeDuplicatesFromList1(List<String> input) {
+        Set<String> uniqueSet = new HashSet<>(input);
+        input.clear();
+        input.addAll(uniqueSet);
+    }
+
+    //mutating method -> modify the original input object arrayList
+    public static List<String> removeDuplicatesFromList2(List<String> input) {
+        //Used linked HashSet since Entry is FIFO thus predictible while Asserting in Junit
+        Set<String> uniqueSet = new LinkedHashSet<>(input);
+        return new ArrayList<>(uniqueSet);
+    }
 
 
 }
+
+
 
 
 

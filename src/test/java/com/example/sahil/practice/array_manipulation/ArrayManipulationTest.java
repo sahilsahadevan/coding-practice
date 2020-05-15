@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class ArrayManipulationTest {
     long time;
@@ -268,6 +270,28 @@ public class ArrayManipulationTest {
         }
     }
 
+    @Test
+    public void getSumPairOfGivenNumberTest() {
+        int[] input1 = new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] input2 = new int[]{15, 12, 0, 12, 4, 0, 3, 9, 10};
+        Assertions.assertArrayEquals(new int[][]{{2, 10}, {3, 9}, {4, 8}, {5, 7}},
+                ArrayManipulation.getSumPairOfGivenNumber(input1, 12));
+        Assertions.assertArrayEquals(new int[][]{{15, 0}, {15, 0}, {12, 3}, {12, 3}},
+                ArrayManipulation.getSumPairOfGivenNumber(input2, 15));
+    }
+
+    @Test
+    public void getSubArraySumPairOfGivenNumberTest() {
+        int[] input1 = new int[]{2, 3, 4, 5, 2, 1, 9, 2};
+        Assertions.assertEquals("[[3, 4, 5], [4, 5, 2, 1], [2, 1, 9], [1, 9, 2]]",
+                ArrayManipulation.getSubArraySumPairOfGivenNumber(input1, 12).toString());
+    }
+
+    @Test
+    public void removeDuplicatesFromListTest() {
+        List<String> integerList = new ArrayList<>(Arrays.asList("Sahil", "Varsha", "Sagil", "Sahil", "Sagil"));
+        Assertions.assertEquals("[Sahil, Varsha, Sagil] ", ArrayManipulation.removeDuplicatesFromList2(integerList).toString());
+    }
 
     // FOR TIME TRACKING
     public void startTime() {
@@ -277,5 +301,6 @@ public class ArrayManipulationTest {
     public void executionTime(long startTime) {
         log.info("ExecutionTime is {} milliseconds", System.currentTimeMillis() - startTime);
     }
+
 
 }
