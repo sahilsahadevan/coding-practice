@@ -1,11 +1,12 @@
 package com.example.sahil.practice.string_manipulation;
 
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
+
+import static com.example.sahil.practice.string_manipulation.PrintPyramids.*;
 
 public class PrintPyramidsTest {
     long time;
@@ -16,13 +17,13 @@ public class PrintPyramidsTest {
     public void printIncrementalNumberPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidIncrementalOne();
+        printEquilateralNumberPyramidIncrementalOne();
         System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidIncrementalTwo();
+        printEquilateralNumberPyramidIncrementalTwo();
         System.setIn(new ByteArrayInputStream("9".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidIncrementalFour();
+        printEquilateralNumberPyramidIncrementalFour();
         System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidIncrementalFive();
+        printEquilateralNumberPyramidIncrementalFive();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
@@ -32,7 +33,7 @@ public class PrintPyramidsTest {
     public void printStarPatternPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralStarPatternPyramid();
+        printEquilateralStarPatternPyramid();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
@@ -42,13 +43,13 @@ public class PrintPyramidsTest {
     public void printDecrementalNumberPyramidsWithUserInputs() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidDecrementalOne();
+        printEquilateralNumberPyramidDecrementalOne();
         System.setIn(new ByteArrayInputStream("4".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidDecrementalTwo();
+        printEquilateralNumberPyramidDecrementalTwo();
         System.setIn(new ByteArrayInputStream("7".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidDecrementalFour();
+        printEquilateralNumberPyramidDecrementalFour();
         System.setIn(new ByteArrayInputStream("7".getBytes()));
-        PrintPyramids.printEquilateralNumberPyramidDecrementalFive();
+        printEquilateralNumberPyramidDecrementalFive();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 
@@ -58,7 +59,7 @@ public class PrintPyramidsTest {
     public void test() {
         //simulate userInput (new Scanner(System.in))
         System.setIn(new ByteArrayInputStream("5".getBytes()));
-        PrintPyramids.printEquilateralMirroredNumberPyramidDecrementalTwo();
+        printEquilateralMirroredNumberPyramidDecrementalTwo();
         //reset SystemInput for fresh inputs [Optional]
         System.setIn(System.in);
 

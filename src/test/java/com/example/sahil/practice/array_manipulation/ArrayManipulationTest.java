@@ -1,6 +1,5 @@
 package com.example.sahil.practice.array_manipulation;
 
-import com.example.sahil.practice.VerifyShell;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -10,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+
+import static com.example.sahil.practice.array_manipulation.ArrayManipulation.*;
+
 
 public class ArrayManipulationTest {
     long time;
@@ -29,47 +31,47 @@ public class ArrayManipulationTest {
         String[] array8 = {"G", "H", "I", "J", "K", "L"};
 
         // CASE_SENSITIVE IS TRUE
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array1, array2, true));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingUtil(array1, array2));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array2, array3, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array2, array3));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array2, array4, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array2, array4));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array2, array5, true));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingUtil(array2, array5));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array2, array6, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array2, array6));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array3, array4, true));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingUtil(array3, array4));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array3, array5, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array3, array5));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array3, array6, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array3, array6));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array3, array7, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array3, array7));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array3, array8, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingUtil(array3, array8));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array4, array5, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array4, array6, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array6, array7, true));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array6, array8, true));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array1, array2, true));
+        Assertions.assertTrue(weakCompareArraysUsingUtil(array1, array2));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array2, array3, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array2, array3));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array2, array4, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array2, array4));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array2, array5, true));
+        Assertions.assertTrue(weakCompareArraysUsingUtil(array2, array5));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array2, array6, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array2, array6));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array3, array4, true));
+        Assertions.assertTrue(weakCompareArraysUsingUtil(array3, array4));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array3, array5, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array3, array5));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array3, array6, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array3, array6));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array3, array7, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array3, array7));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array3, array8, true));
+        Assertions.assertFalse(weakCompareArraysUsingUtil(array3, array8));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array4, array5, true));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array4, array6, true));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array6, array7, true));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array6, array8, true));
 
         // CASE_SENSITIVE IS FALSE
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array1, array2, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array2, array3, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array2, array4, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array2, array5, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array2, array6, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array3, array4, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array3, array5, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array3, array6, false));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array3, array7, false));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array3, array8, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array4, array5, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array4, array6, false));
-        Assertions.assertTrue(ArrayManipulation.weakCompareArraysUsingIteration(array5, array6, false));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array6, array7, false));
-        Assertions.assertFalse(ArrayManipulation.weakCompareArraysUsingIteration(array6, array8, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array1, array2, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array2, array3, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array2, array4, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array2, array5, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array2, array6, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array3, array4, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array3, array5, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array3, array6, false));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array3, array7, false));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array3, array8, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array4, array5, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array4, array6, false));
+        Assertions.assertTrue(weakCompareArraysUsingIteration(array5, array6, false));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array6, array7, false));
+        Assertions.assertFalse(weakCompareArraysUsingIteration(array6, array8, false));
 
     }
 
@@ -85,40 +87,40 @@ public class ArrayManipulationTest {
         String[] array8 = {"G", "H", "I", "J", "K", "L"};
 
         // CASE_SENSITIVE IS TRUE
-        Assertions.assertTrue(ArrayManipulation.exactCompareArraysUsingIteration(array1, array2, true));
-        Assertions.assertTrue(ArrayManipulation.exactCompareArraysUsingUtil(array1, array2));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array3, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingUtil(array2, array3));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array4, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array5, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array6, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array4, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array5, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array6, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array7, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array8, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array4, array5, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array4, array6, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array5, array6, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array6, array7, true));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array6, array8, true));
+        Assertions.assertTrue(exactCompareArraysUsingIteration(array1, array2, true));
+        Assertions.assertTrue(exactCompareArraysUsingUtil(array1, array2));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array3, true));
+        Assertions.assertFalse(exactCompareArraysUsingUtil(array2, array3));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array4, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array5, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array6, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array4, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array5, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array6, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array7, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array8, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array4, array5, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array4, array6, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array5, array6, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array6, array7, true));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array6, array8, true));
 
         // CASE_SENSITIVE IS FALSE
-        Assertions.assertTrue(ArrayManipulation.exactCompareArraysUsingIteration(array1, array2, false));
-        Assertions.assertTrue(ArrayManipulation.exactCompareArraysUsingIteration(array2, array3, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array4, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array5, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array2, array6, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array4, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array5, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array6, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array7, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array3, array8, false));
-        Assertions.assertTrue(ArrayManipulation.exactCompareArraysUsingIteration(array4, array5, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array4, array6, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array5, array6, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array6, array7, false));
-        Assertions.assertFalse(ArrayManipulation.exactCompareArraysUsingIteration(array6, array8, false));
+        Assertions.assertTrue(exactCompareArraysUsingIteration(array1, array2, false));
+        Assertions.assertTrue(exactCompareArraysUsingIteration(array2, array3, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array4, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array5, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array2, array6, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array4, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array5, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array6, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array7, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array3, array8, false));
+        Assertions.assertTrue(exactCompareArraysUsingIteration(array4, array5, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array4, array6, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array5, array6, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array6, array7, false));
+        Assertions.assertFalse(exactCompareArraysUsingIteration(array6, array8, false));
 
     }
 
@@ -129,10 +131,10 @@ public class ArrayManipulationTest {
         String[] superheros = {"Batman", "Rorschach", "Glasses Man", "Inspector SpaceTime"};
         Assertions.assertEquals(
                 new HashSet<>(Arrays.asList("APPLE", "MANGO")),
-                ArrayManipulation.findDuplicatesFromArrays(fruits));
+                findDuplicatesFromArrays(fruits));
         Assertions.assertEquals(
                 new HashSet<>(),
-                ArrayManipulation.findDuplicatesFromArrays(superheros));
+                findDuplicatesFromArrays(superheros));
     }
 
     @Test
@@ -142,16 +144,16 @@ public class ArrayManipulationTest {
         int[] c = {17, 18};
         int[] d = {17};
         int[] e = {};
-        Assertions.assertEquals(17, ArrayManipulation.getSecondLargestNumberUsingUtils(a));
-        Assertions.assertEquals(17, ArrayManipulation.getSecondLargestNumberUsingIteration(a));
-        Assertions.assertEquals(17, ArrayManipulation.getSecondLargestNumberUsingUtils(b));
-        Assertions.assertEquals(17, ArrayManipulation.getSecondLargestNumberUsingIteration(b));
-        Assertions.assertEquals(17, ArrayManipulation.getSecondLargestNumberUsingUtils(c));
-        Assertions.assertEquals(17, ArrayManipulation.getSecondLargestNumberUsingIteration(c));
-        Assertions.assertEquals(-1, ArrayManipulation.getSecondLargestNumberUsingUtils(d));
-        Assertions.assertEquals(-1, ArrayManipulation.getSecondLargestNumberUsingIteration(d));
-        Assertions.assertEquals(-1, ArrayManipulation.getSecondLargestNumberUsingUtils(e));
-        Assertions.assertEquals(-1, ArrayManipulation.getSecondLargestNumberUsingIteration(e));
+        Assertions.assertEquals(17, getSecondLargestNumberUsingUtils(a));
+        Assertions.assertEquals(17, getSecondLargestNumberUsingIteration(a));
+        Assertions.assertEquals(17, getSecondLargestNumberUsingUtils(b));
+        Assertions.assertEquals(17, getSecondLargestNumberUsingIteration(b));
+        Assertions.assertEquals(17, getSecondLargestNumberUsingUtils(c));
+        Assertions.assertEquals(17, getSecondLargestNumberUsingIteration(c));
+        Assertions.assertEquals(-1, getSecondLargestNumberUsingUtils(d));
+        Assertions.assertEquals(-1, getSecondLargestNumberUsingIteration(d));
+        Assertions.assertEquals(-1, getSecondLargestNumberUsingUtils(e));
+        Assertions.assertEquals(-1, getSecondLargestNumberUsingIteration(e));
 
     }
 
@@ -163,20 +165,20 @@ public class ArrayManipulationTest {
         int[] d = {17};
         int[] e = {};
         //nth largest
-        Assertions.assertEquals(17, ArrayManipulation.getNthLargestNumberUsingTreeSet(a, 4));
-        Assertions.assertEquals(16, ArrayManipulation.getNthLargestNumberUsingTreeSet(b, 3));
-        Assertions.assertEquals(17, ArrayManipulation.getNthLargestNumberUsingTreeSet(c, 2));
-        Assertions.assertEquals(17, ArrayManipulation.getNthLargestNumberUsingTreeSet(d, 1));
-        Assertions.assertEquals(-1, ArrayManipulation.getNthLargestNumberUsingTreeSet(d, 10));
-        Assertions.assertEquals(-1, ArrayManipulation.getNthLargestNumberUsingTreeSet(e, 0));
+        Assertions.assertEquals(17, getNthLargestNumberUsingTreeSet(a, 4));
+        Assertions.assertEquals(16, getNthLargestNumberUsingTreeSet(b, 3));
+        Assertions.assertEquals(17, getNthLargestNumberUsingTreeSet(c, 2));
+        Assertions.assertEquals(17, getNthLargestNumberUsingTreeSet(d, 1));
+        Assertions.assertEquals(-1, getNthLargestNumberUsingTreeSet(d, 10));
+        Assertions.assertEquals(-1, getNthLargestNumberUsingTreeSet(e, 0));
 
         //nth smallest
-        Assertions.assertEquals(4, ArrayManipulation.getNthSmallestNumberUsingTreeSet(a, 4));
-        Assertions.assertEquals(15, ArrayManipulation.getNthSmallestNumberUsingTreeSet(b, 3));
-        Assertions.assertEquals(18, ArrayManipulation.getNthSmallestNumberUsingTreeSet(c, 2));
-        Assertions.assertEquals(17, ArrayManipulation.getNthSmallestNumberUsingTreeSet(d, 1));
-        Assertions.assertEquals(-1, ArrayManipulation.getNthSmallestNumberUsingTreeSet(d, 10));
-        Assertions.assertEquals(-1, ArrayManipulation.getNthSmallestNumberUsingTreeSet(e, 0));
+        Assertions.assertEquals(4, getNthSmallestNumberUsingTreeSet(a, 4));
+        Assertions.assertEquals(15, getNthSmallestNumberUsingTreeSet(b, 3));
+        Assertions.assertEquals(18, getNthSmallestNumberUsingTreeSet(c, 2));
+        Assertions.assertEquals(17, getNthSmallestNumberUsingTreeSet(d, 1));
+        Assertions.assertEquals(-1, getNthSmallestNumberUsingTreeSet(d, 10));
+        Assertions.assertEquals(-1, getNthSmallestNumberUsingTreeSet(e, 0));
 
     }
 
@@ -186,9 +188,9 @@ public class ArrayManipulationTest {
         int[][] b = new int[][]{{16, 10}, {8, 18}, {15, 18}, {16, 18}, {15, 17}}; // 5 rows, 2 columns
         int[][] c = new int[][]{{16, 10, 11}, {8, 18, 20}, {15, 17, 2}}; // 3 rows, 3 columns
 
-        ArrayManipulation.printMatrixValues(a);
-        ArrayManipulation.printMatrixValues(b);
-        ArrayManipulation.printMatrixValues(c);
+        printMatrixValues(a);
+        printMatrixValues(b);
+        printMatrixValues(c);
 
     }
 
@@ -197,10 +199,10 @@ public class ArrayManipulationTest {
         int[][] a = new int[][]{{16, 15, 18, 17, 10}, {8, 0, 5, 15, 18}}; // 2 rows, 5 column
         int[][] b = new int[][]{{23, 1, 14, 10, 49}, {34, 99, 78, 63, 81}}; // 2 rows, 5 column
         int[][] c = new int[][]{{16, 10}, {8, 18}, {15, 18}, {16, 18}, {15, 17}}; // 5 rows, 2 columns
-        int[][] resultAdd1 = ArrayManipulation.addMatrix(a, b);
-        int[][] resultSubtract1 = ArrayManipulation.subtractMatrix(a, b);
-        int[][] resultAdd2 = ArrayManipulation.addMatrix(a, c);
-        int[][] resultSubtract2 = ArrayManipulation.subtractMatrix(a, c);
+        int[][] resultAdd1 = addMatrix(a, b);
+        int[][] resultSubtract1 = subtractMatrix(a, b);
+        int[][] resultAdd2 = addMatrix(a, c);
+        int[][] resultSubtract2 = subtractMatrix(a, c);
         Assertions.assertArrayEquals(new int[][]{{39, 16, 32, 27, 59}, {42, 99, 83, 78, 99}}, resultAdd1);
         Assertions.assertArrayEquals(new int[][]{{-7, 14, 4, 7, -39}, {-26, -99, -73, -48, -63}}, resultSubtract1);
         Assertions.assertArrayEquals(new int[][]{}, resultAdd2);
@@ -236,8 +238,8 @@ public class ArrayManipulationTest {
         int[][] a = new int[][]{{16, 15, 18, 17, 10}, {8, 0, 5, 15, 18}}; // 2 rows, 5 column
         int[][] b = new int[][]{{23, 1, 14, 10, 49}, {34, 99, 78, 63, 81}}; // 2 rows, 5 column
         int[][] c = new int[][]{{16, 10, 6}, {8, 18, 28}, {15, 18, 21}, {16, 18, 20}, {15, 17, 19}}; // 5 rows, 3 columns
-        int[][] resultMultiply1 = ArrayManipulation.multiplyMatrix(a, b);
-        int[][] resultMultiply2 = ArrayManipulation.multiplyMatrix(a, c);
+        int[][] resultMultiply1 = multiplyMatrix(a, b);
+        int[][] resultMultiply2 = multiplyMatrix(a, c);
         Assertions.assertArrayEquals(new int[][]{}, resultMultiply1);
         Assertions.assertArrayEquals(new int[][]{{150, 170, 190}, {270, 306, 342}}, resultMultiply2);
 
@@ -256,7 +258,7 @@ public class ArrayManipulationTest {
     @Test
     public void transposeMatricesTest() {
         int[][] input = new int[][]{{16, 15, 18, 17, 10}, {8, 0, 5, 15, 18}}; // 2 rows, 5 column
-        int[][] transpose = VerifyShell.getTranspose(input);
+        int[][] transpose = getTranspose(input);
         Assertions.assertArrayEquals(new int[][]{{16, 8}, {15, 0}, {18, 5}, {17, 15}, {10, 18}}, transpose);
         int i = 0;
         while (i < input.length) {
@@ -275,24 +277,63 @@ public class ArrayManipulationTest {
         int[] input1 = new int[]{2, 3, 4, 5, 6, 7, 8, 9, 10};
         int[] input2 = new int[]{15, 12, 0, 12, 4, 0, 3, 9, 10};
         Assertions.assertArrayEquals(new int[][]{{2, 10}, {3, 9}, {4, 8}, {5, 7}},
-                ArrayManipulation.getSumPairOfGivenNumber(input1, 12));
+                getSumPairOfGivenNumber(input1, 12));
         Assertions.assertArrayEquals(new int[][]{{15, 0}, {15, 0}, {12, 3}, {12, 3}},
-                ArrayManipulation.getSumPairOfGivenNumber(input2, 15));
+                getSumPairOfGivenNumber(input2, 15));
     }
 
     @Test
     public void getSubArraySumPairOfGivenNumberTest() {
         int[] input1 = new int[]{2, 3, 4, 5, 2, 1, 9, 2};
         Assertions.assertEquals("[[3, 4, 5], [4, 5, 2, 1], [2, 1, 9], [1, 9, 2]]",
-                ArrayManipulation.getSubArraySumPairOfGivenNumber(input1, 12).toString());
+                getSubArraySumPairOfGivenNumber(input1, 12).toString());
     }
 
     @Test
     public void removeDuplicatesFromListTest() {
         List<String> integerList = new ArrayList<>(Arrays.asList("Sahil", "Varsha", "Sagil", "Sahil", "Sagil"));
-        Assertions.assertEquals("[Sahil, Varsha, Sagil] ", ArrayManipulation.removeDuplicatesFromList2(integerList).toString());
+        Assertions.assertEquals("[Sahil, Varsha, Sagil]", removeDuplicatesFromList2(integerList).toString());
     }
 
+
+    @Test
+    public void getArrayIntersectionTest() {
+        String[] arr1 = new String[]{"Sahil", "Varsha", "Sagil", "Mummy", "Papa"};
+        String[] arr2 = new String[]{"Mummy", "Papa"};
+        Assertions.assertEquals("[Mummy, Papa]", getArrayIntersectionUsingUtils(arr1,arr2).toString());
+        Assertions.assertEquals("[Mummy, Papa]", getArrayIntersectionUsingIteration(arr1,arr2).toString());
+    }
+
+    @Test
+    public void test() {
+        int[] input1 = new int[]{0, 10, 0, 22, 45, 0, 0, 100, 0, 5};
+        int[] input2 = new int[]{0, 10, 0, 22, 45, 22, 0, 100, 0, 22};
+        int[] input3 = new int[]{0, 10, 0, 22, 10, 0, 0, 10, 0, 5};
+        Assertions.assertArrayEquals(new int[]{0, 0, 0, 0, 0, 5, 100, 45, 22, 10},
+                moveAllZerosToFirstArrayPositions(input1));
+
+        Assertions.assertArrayEquals(new int[]{10, 22, 45, 100, 5, 0, 0, 0, 0, 0},
+                moveAllZerosToLastArrayPositions(input1));
+
+        Assertions.assertArrayEquals(new int[]{0, 0, 0, 0, 0, 10, 22, 45, 100, 5},
+                moveAllXToFirstArrayPositions(input1, 0));
+
+        Assertions.assertArrayEquals(new int[]{10, 22, 45, 100, 5, 0, 0, 0, 0, 0},
+                moveAllXToLastArrayPositions(input1, 0));
+
+        Assertions.assertArrayEquals(new int[]{22, 22, 22, 0, 10, 0, 45, 0, 100, 0},
+                moveAllXToFirstArrayPositions(input2, 22));
+
+        Assertions.assertArrayEquals(new int[]{0, 10, 0, 45, 0, 100, 0, 22, 22, 22},
+                moveAllXToLastArrayPositions(input2, 22));
+
+        Assertions.assertArrayEquals(new int[]{10, 10, 10, 0, 0, 22, 0, 0, 0, 5},
+                moveAllXToFirstArrayPositions(input3, 10));
+
+        Assertions.assertArrayEquals(new int[]{0, 0, 22, 0, 0, 0, 5, 10, 10, 10},
+                moveAllXToLastArrayPositions(input3, 10));
+
+    }
     // FOR TIME TRACKING
     public void startTime() {
         time = System.currentTimeMillis();

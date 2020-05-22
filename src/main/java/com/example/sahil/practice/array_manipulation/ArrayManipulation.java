@@ -120,9 +120,6 @@ public class ArrayManipulation {
         int largest = 0;
         int secondlargest = 0;
         for (int eachNum : input) {
-            if (eachNum == 0) {
-                continue;
-            }
             if (largest < eachNum) {
                 secondlargest = largest;
                 largest = eachNum;
@@ -262,6 +259,30 @@ public class ArrayManipulation {
         return result;
     }
 
+    //Transpose of a matrix is formed by turning all rows of a matrix into columns and columns into rows
+    /*
+        Transpose of  |3 1 2|  = |3 4|
+                      |4 5 6|    |1 5|
+                                 |2 6|
+     */
+    public static int[][] getTranspose(int[][] input) {
+
+        if (null == input || input.length == 0) {
+            return new int[0][0];
+        }
+
+        int[][] transpose = new int[input[1].length][input.length];
+
+        for (int i = 0; i < input.length; i++) {
+            for (int j = 0; j < input[1].length; j++) {
+                transpose[j][i] = input[i][j];
+            }
+        }
+
+        return transpose;
+
+    }
+
 //=================== How to find all pairs of elements in an array whose sum is equal to given number? ===========
     //For example, if {4, 5, 7, 11, 9, 13, 8, 12} is an array and 20 is the given number,
     // then you have to find all pairs of elements in this array whose sum must be 20.
@@ -325,7 +346,106 @@ public class ArrayManipulation {
         return new ArrayList<>(uniqueSet);
     }
 
+//=================  How to find intersection of two arrays in java ======================
 
+    public static List<String> getArrayIntersectionUsingUtils(String[] arr1, String[] arr2) {
+        List<String> arr1List = new ArrayList<>(Arrays.asList(arr1));
+        List<String> interSectList = new ArrayList<>();
+        Arrays.stream(arr2)
+                .forEach(x -> {
+                    if (arr1List.contains(x)) {
+                        interSectList.add(x);
+                    }
+                });
+        return interSectList;
+
+    }
+
+    public static List<String> getArrayIntersectionUsingIteration(String[] arr1, String[] arr2) {
+        List<String> interSectList = new ArrayList<>();
+        for (String s : arr1) {
+            for (String value : arr2) {
+                if (s.equalsIgnoreCase(value)) {
+                    interSectList.add(s);
+                }
+            }
+        }
+        return interSectList;
+
+    }
+
+//=========================  How to separate zeros/ numberX from non-zeros in an array? ==============--
+    //Write a java program to separate zeros from non-zeros in the given array.
+    // You have to move zeros either to end of the array or bring them to beginning of the array.
+    // For example, if {14, 0, 5, 2, 0, 3, 0} is the given array, then moving zeros to end of the array will result
+    // {14, 5, 2, 3, 0, 0, 0} and bringing zeros to front will result {0, 0, 0, 14, 5, 2,
+
+    public static int[] moveAllZerosToFirstArrayPositions(int[] input) {
+        int[] result = new int[input.length];
+        int j = input.length - 1;
+        for (int value : input) {
+            if (value != 0) {
+                result[j] = value;
+                j--;
+            }
+        }
+        return result;
+    }
+
+    public static int[] moveAllZerosToLastArrayPositions(int[] input) {
+        int[] result = new int[input.length];
+        int j = 0;
+        for (int value : input) {
+            if (value != 0) {
+                result[j] = value;
+                j++;
+            }
+        }
+        return result;
+    }
+
+    //========
+    //Write a java program to separate Number X from other numbers in the given array. You have to move X either
+    // to end of the array or bring them to beginning of the array. For example, if x is 22 and
+    // if {0, 10, 0, 22, 45, 22, 0, 100, 0, 22} is the given array,
+    // then moving zeros to end of the array will result [0, 10, 0, 45, 0, 100, 0, 22, 22, 22] and
+    // bringing zeros to front will result [22, 22, 22, 0, 10, 0, 45, 0, 100, 0]
+
+    public static int[] moveAllXToFirstArrayPositions(int[] input, int x) {
+        int[] result = new int[input.length];
+        int j = 0;
+        for (int value : input) {
+            if (value == x) {
+                result[j] = value;
+                j++;
+            }
+        }
+        for (int value : input) {
+            if (value != x) {
+                result[j] = value;
+                j++;
+            }
+        }
+        return result;
+    }
+
+    public static int[] moveAllXToLastArrayPositions(int[] input, int x) {
+        int[] result = new int[input.length];
+        int j = 0;
+        for (int value : input) {
+            if (value != x) {
+                result[j] = value;
+                j++;
+            }
+        }
+        for (int value : input) {
+            if (value == x) {
+                result[j] = value;
+                j++;
+            }
+        }
+        return result;
+    }
 }
 
 

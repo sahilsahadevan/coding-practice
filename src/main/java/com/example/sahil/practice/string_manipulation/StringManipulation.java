@@ -3,10 +3,7 @@ package com.example.sahil.practice.string_manipulation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class StringManipulation {
@@ -121,7 +118,9 @@ public class StringManipulation {
 
 
 
-//=========================== Anagram program in java   =============================================
+//=========================== Anagram program in java [Mother in Law = Hitler Woman]  =================================
+//== Rephrased Question : How to check whether one string is a rotation of another in java [JavaJ2eeStruts = StrutsJavaJ2ee = J2eeStrutsJava]========
+
 
     public static boolean checkIfAnagramUsingArraysUtils(String phrase1, String phrase2) {
         String phrase1WithoutSpaces = phrase1.replaceAll(" ", "").toLowerCase();
@@ -164,13 +163,12 @@ public class StringManipulation {
             phrase2Counter.put(phrase2Arr[i], phrase2Counter.getOrDefault(phrase2Arr[i], 0) + 1);
         }
         AtomicBoolean isAnagram = new AtomicBoolean(true);
-        phrase1Counter.entrySet()
-                .forEach(eachSet -> {
-                    if (!phrase2Counter.containsKey(eachSet.getKey()) ||
-                            !phrase2Counter.get(eachSet.getKey()).equals(eachSet.getValue())) {
-                        isAnagram.compareAndSet(true, false);
-                    }
-                });
+        phrase1Counter.forEach((key, value) -> {
+            if (!phrase2Counter.containsKey(key) ||
+                    !phrase2Counter.get(key).equals(value)) {
+                isAnagram.compareAndSet(true, false);
+            }
+        });
         if (isAnagram.get()) {
             log.info("Yes, '{}' is an anagram of '{}'", phrase1, phrase2);
         } else {

@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.example.sahil.practice.VerifyShell.*;
+
 public class VerifyShellTest {
     private final Logger log = LoggerFactory.getLogger(ArrayManipulationTest.class);
 
@@ -13,21 +15,12 @@ public class VerifyShellTest {
        and validated for syntax and logical errors
      */
 
-
     @Test
-    public void test(){
-        int[][] a = new int[][]{{16, 15, 18, 17, 10}, {8, 0, 5, 15, 18}}; // 2 rows, 5 column
-        int[][] transpose =  VerifyShell.getTranspose(a);
-        int i = 0;
-        while (i < a.length ){
-            log.info("{}",a[i]);
-            i++;
-        }
-        i = 0;
-        while (i < transpose.length ){
-                log.info("{}",transpose[i]);
-                i++;
-        }
+    public void test() {
+        log.info("{}", 0XF); //means the number is a decimal 1
+        log.info("{}", Integer.toBinaryString(15)); //means the number is a decimal 1
+        log.info("{}", 0b0100/0b0010); //means the number is a decimal 1
+
     }
 }
 

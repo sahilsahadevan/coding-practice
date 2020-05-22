@@ -1,11 +1,25 @@
 package com.example.sahil.practice.number_manipulation;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 public class NumberManipulation {
 
     private static final Logger log = LoggerFactory.getLogger(NumberManipulation.class);
+
+//===========================How to Multiply a number with itself a certain number of time =============================
+
+    public static int getPowersOfNum(int input, int toThePowerOf) {
+        int result = 1;
+        for (int i = 0; i < toThePowerOf; i++) {
+            result = result * input;
+        }
+        return result;
+    }
 
 //===========================How to find sum of all digits of a number in java =============================
 
@@ -120,5 +134,82 @@ public class NumberManipulation {
             }
         }
         return true;
+    }
+
+
+// ================== How to check whether user input is number or not in java? ====================================
+
+    public static boolean isNumber() {
+        System.out.print("Print input -> ");
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.next();
+        if (scanner.hasNext("")) {
+            log.info("Empty input");
+            return false;
+        }
+        value = value.replace(",", "");
+        System.out.println(value);
+        try {
+            Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            log.info("{} is not a Number", value);
+            return false;
+        }
+        log.info("{} is a Number", value);
+        return true;
+    }
+
+    public static boolean isNumberUsingUtils() {
+        System.out.print("Print input -> ");
+        Scanner scanner = new Scanner(System.in);
+        String value = scanner.next();
+        return NumberUtils.isParsable(value);
+    }
+
+// ==================  How to find trigonometric values of an angle in java ====================================
+    // sin , cos, tan, sec, cosec, tan
+
+    public static void printTrigonometricValues(int input) {
+        double sine = Math.sin(input);
+        double cosine = Math.cos(input);
+        double tangent = Math.tan(input);
+        double sec = 1 / sine;
+        double cosec = 1 / cosine;
+        double cotangent = 1 / tangent;
+        log.info("sine of {} is {}", input, sine);
+        log.info("cosine of {} is {}", input, cosine);
+        log.info("tangent of {} is {}", input, tangent);
+        log.info("sec of {} is {}", input, sec);
+        log.info("cosec of {} is {}", input, cosec);
+        log.info("cotangent of {} is {}", input, cotangent);
+    }
+
+// ================== get Unsigned Positive numbers from negative ===================
+
+    // unsigned number of -25 or 25 is 25.
+    public static int getPositive(int number) {
+        return (number < 0 ? -(number) : number);
+    }
+
+
+// ================== Split decimal ===================
+
+    // unsigned number of -25 or 25 is 25.
+    public static Map<String, Integer> splitDecimalsInDouble(Double decimalFraction) {
+        Integer beforeDecimals = decimalFraction.intValue();
+        Integer afterDecimals = (int) ((decimalFraction - beforeDecimals) * 100);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("BeforeDecimalPoint", beforeDecimals);
+        map.put("AfterDecimalPoint", afterDecimals);
+        return map;
+    }
+
+    public static Map<String, BigDecimal> splitBDecimalsInBigDecimal(BigDecimal decimalFraction) {
+        BigDecimal beforeDecimals = new BigDecimal(decimalFraction.intValue());
+        BigDecimal afterDecimals = (decimalFraction.subtract(beforeDecimals));
+        Map<String, BigDecimal> map = new HashMap<>();
+        map.put("BeforeDecimalPoint", beforeDecimals);
+        map.put("AfterDecimalPoint", afterDecimals);
+        return map;
     }
 }
