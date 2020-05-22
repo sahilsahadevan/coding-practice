@@ -95,10 +95,11 @@ public class NumberBaseManipulation {
         return String.valueOf(binaryNumber);
     }
 
-    // ============================ Decimal To Octal, And Vice Versa =================================
+// ============================ Decimal To Octal, And Vice Versa =================================
     /*
         Same formula as binary-from-decimal except mod by 8 during iteration
      */
+
     //Alternative to Integer.toOctalString(dec)
     public static String getOctalFromDecimal(int decimalNum) {
         //Other logics remain same as getBinaryDoubleFromDecimalUsingSimpleMath()
@@ -124,6 +125,10 @@ public class NumberBaseManipulation {
     }
 
 // ======================= Decimal To HexaDecimal, And Vice Versa ===============================================
+
+    /*
+        Same formula as binary-from-decimal or octal from decimal except MOD by 16 and refer from hexChart during iteration
+     */
 
     //Alternative to Integer.toHexString(dec)
     public static String getHexadecimalFromDecimal(int decimalNum) {
