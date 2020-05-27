@@ -15,10 +15,11 @@ public class NumberManipulationTest {
 
     @Test
     public void getPowerofNumTest() {
-        Assertions.assertEquals(64, getPowersOfNum(8,2));
-        Assertions.assertEquals(8, getPowersOfNum(2,3));
+        Assertions.assertEquals(64, getPowersOfNum(8, 2));
+        Assertions.assertEquals(8, getPowersOfNum(2, 3));
 
     }
+
     @Test
     public void getSumOfDigitsTest() {
         Integer input = 123;
@@ -58,25 +59,25 @@ public class NumberManipulationTest {
         long time = System.currentTimeMillis();
         log.info("StartTime is {}", time);
         log.info("{}", getNextLargestNumberWithoutGivenDigitUsingRecursive(1114, 4));
+        Assertions.assertEquals(1113, getNextLargestNumberWithoutGivenDigitUsingRecursive(1114, 4));
         executionTime(time);
         time = System.currentTimeMillis();
         log.info("StartTime is {}", time);
-        log.info("{}", getNextLargestNumberWithoutGivenDigitUsingRecursive(2345, 3));
+        Assertions.assertEquals(2299,getNextLargestNumberWithoutGivenDigitUsingRecursive(2345, 3));
         executionTime(time);
         time = System.currentTimeMillis();
         log.info("StartTime is {}", time);
-        log.info("{}", getNextLargestNumberWithoutGivenDigitUsingRecursive(3311, 3));
+        Assertions.assertEquals(2999,getNextLargestNumberWithoutGivenDigitUsingRecursive(3311, 3));
         executionTime(time);
         time = System.currentTimeMillis();
         log.info("StartTime is {}", time);
-        log.info("{}", getNextLargestNumberWithoutGivenDigitUsingRecursive(1110, 0));
+        Assertions.assertEquals(999,getNextLargestNumberWithoutGivenDigitUsingRecursive(1110, 0));
         executionTime(time);
         time = System.currentTimeMillis();
         log.info("StartTime is {}", time);
-        log.info("{}", getNextLargestNumberWithoutGivenDigitUsingRecursive(1110, 1));
+        Assertions.assertEquals(999,getNextLargestNumberWithoutGivenDigitUsingRecursive(1110, 1));
         executionTime(time);
     }
-
 
     @Test
     public void isBinaryTest() {
@@ -125,22 +126,30 @@ public class NumberManipulationTest {
     }
 
     @Test
-    public void getPositiveTest(){
+    public void getPositiveTest() {
         Assertions.assertEquals(25, getPositive(-25));
         Assertions.assertEquals(25, getPositive(25));
     }
 
     @Test
-    public void splitDecimalTest(){
+    public void splitDecimalTest() {
         log.info("{}", splitDecimalsInDouble(4.12));
         log.info("{}", splitBDecimalsInBigDecimal(new BigDecimal("4.12")));
 
     }
+
+    @Test
+    public void addToReverseUntilPalindromeTest() {
+        Assertions.assertEquals(5231, addToReverseUntilPalindrome(1325));
+        Assertions.assertEquals(25, addToReverseUntilPalindrome(52));
+
+    }
+
     @Test
     public void test() {
         long time = System.currentTimeMillis();
         log.info("StartTime is {}", time);
-        log.info("{}", isBinary(19991));
+        log.info("{}", 5 % 10);
         executionTime(time);
     }
 

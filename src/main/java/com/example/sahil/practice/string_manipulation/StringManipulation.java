@@ -22,10 +22,7 @@ public class StringManipulation {
         if (null == input || input.length() <= 1) {
             return input;
         }
-        String a = reverseUsingRecursive1(input.substring(1)) + input.charAt(0);
-        log.info("[reverseUsingRecursive1] input is {} reversed value is =>{}", input, a);
-        return a;
-
+        return reverseUsingRecursive1(input.substring(1)) + input.charAt(0);
     }
 
     //Using Recursive Method 2 : ExecutionTime is 9-12 milliseconds
@@ -33,13 +30,11 @@ public class StringManipulation {
         if (null == input || input.length() <= 1) {
             return input;
         }
-        String a = input.substring(input.length() - 1) + reverseUsingRecursive2(input.substring(0, input.length() - 1));
-        log.info("[reverseUsingRecursive2] input is {} reversed value is =>{}", input, a);
-        return a;
+        return input.substring(input.length() - 1) + reverseUsingRecursive2(input.substring(0, input.length() - 1));
     }
 
-    //Using Iteration Loop : ExecutionTime is around 1 millisecond. This is the fastest
-    public static String reverseUsingLoopIteration(String input) {
+    //Using Iteration Loop : ExecutionTime is around 1 millisecond.
+    public static String reverseUsingLoopIteration1(String input) {
         char[] inputCharArray = input.toCharArray();
         char[] reverseChar = new char[input.length()];
         int j = 0;
@@ -47,17 +42,24 @@ public class StringManipulation {
             reverseChar[j] = inputCharArray[i];
             j++;
         }
-        log.info("[reverseUsingLoopIteration] input is {} reversed value is =>{}",
-                String.valueOf(inputCharArray), String.valueOf(reverseChar));
-        return String.valueOf(reverseChar);
+        return String.valueOf(reverseChar).toLowerCase();
+    }
+
+    //Using Iteration Loop : ExecutionTime is around 1 millisecond.
+    // fun fact : stringBuilder inherently has a method that does the reversion : inputStringBuilder.reverse().
+    // So the following iteration is actually counter-productive . Good to know about inputStringBuilder.insert() though.
+    public static String reverseUsingLoopIteration2(String input) {
+        StringBuilder reverseStr = new StringBuilder();
+        for (char i : input.toCharArray()) {
+            reverseStr.insert(0, i);
+        }
+        return reverseStr.toString().toLowerCase();
     }
 
     //Using Iteration Loop : ExecutionTime is around 1 millisecond. This internally uses reverseUsingLoopIteration
     public static String reverseUsingStringBuilder(String input) {
         StringBuilder inputStringBuilder = new StringBuilder(input);
         inputStringBuilder.reverse();
-        log.info("[reverseUsingStringBuilder] input is {} reversed value is =>{}",
-                input, inputStringBuilder);
         return new String(inputStringBuilder);
     }
 
@@ -83,7 +85,7 @@ public class StringManipulation {
     //Using ReplaceAll : ExecutionTime is around 1 millisecond, but this is slightly faster than iteration
     public static void removeAllWhiteSpaceUsingRegex(String input) {
         if (input != null) {
-            System.out.println(input.replaceAll(" ",""));
+            System.out.println(input.replaceAll(" ", ""));
         }
     }
 
@@ -115,7 +117,6 @@ public class StringManipulation {
                 .filter(entry -> 1 != entry.getValue())
                 .forEach(entry -> log.info("{}: {}", entry.getKey(), entry.getValue()));
     }
-
 
 
 //=========================== Anagram program in java [Mother in Law = Hitler Woman]  =================================

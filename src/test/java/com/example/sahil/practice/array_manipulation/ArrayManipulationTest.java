@@ -305,7 +305,7 @@ public class ArrayManipulationTest {
     }
 
     @Test
-    public void test() {
+    public void moveAllXTests() {
         int[] input1 = new int[]{0, 10, 0, 22, 45, 0, 0, 100, 0, 5};
         int[] input2 = new int[]{0, 10, 0, 22, 45, 22, 0, 100, 0, 22};
         int[] input3 = new int[]{0, 10, 0, 22, 10, 0, 0, 10, 0, 5};
@@ -334,6 +334,14 @@ public class ArrayManipulationTest {
                 moveAllXToLastArrayPositions(input3, 10));
 
     }
+
+    @Test
+    public void getLeaderNumberTest(){
+        int[] input1 = new int[]{0, 10, 45 , 22, 41, 0, 0, 100, 95, 5};
+        log.info("{}", getLeaderNumbers(input1));
+        Assertions.assertEquals("[45, 41, 100, 95, 5]", getLeaderNumbers(input1).toString());
+    }
+
     // FOR TIME TRACKING
     public void startTime() {
         time = System.currentTimeMillis();

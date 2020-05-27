@@ -83,31 +83,28 @@ public class NumberManipulation {
         if (!String.valueOf(input).contains(String.valueOf(givenDigit))) {
             return input;
         }
-        int temp = input;
         //To check for the excluding number at base 1.
-        if (temp % 10 == givenDigit) {
-            temp = temp - 1;
+        if (input % 10 == givenDigit) {
+            input = input - 1;
         }
-        int length = String.valueOf(input).length();
         int base = 1;
         //To check the base of the number -> 1, 10, 1000, 10000 etc. e.g.: 345 is in 100s , 12345 is in 10000s.
-        for (int i = 1; i < length; i++) {
+        while (input > base * 10) {
             base = base * 10;
         }
-        int diff = temp;
+        int diff = input;
         //To check each decimal position of the number starting from the highest.
         // by logic : second largest number to, say 1456, without 4 , would be = 1456 - (1456 % 100 + 1)
-        for (int i = base; i > 0; ) {
+        for (int i = base; i > 0; i /= 10) {
             int digit = diff / i;
             if (digit == givenDigit) {
                 diff = diff % i + 1;
                 break;
             }
             diff = diff % i;
-            i = i / 10;
         }
         // do a recursive check of the initial result
-        return getNextLargestNumberWithoutGivenDigitUsingRecursive(temp - diff, givenDigit);
+        return getNextLargestNumberWithoutGivenDigitUsingRecursive(input - diff, givenDigit);
     }
 
     public static int getNextLargestNumberWithoutGivenDigitUsingIteration(int input, int givenDigit) {
@@ -192,7 +189,7 @@ public class NumberManipulation {
     }
 
 
-// ================== Split decimal ===================
+// ===================== Split decimal =============================================================================
 
     // unsigned number of -25 or 25 is 25.
     public static Map<String, Integer> splitDecimalsInDouble(Double decimalFraction) {
@@ -212,4 +209,27 @@ public class NumberManipulation {
         map.put("AfterDecimalPoint", afterDecimals);
         return map;
     }
+
+//===================== Reverse and add until you get a palindrome ==============================================
+    /*
+        Write a java program to take input number from the user, reverse it and add it to itself.
+        If the sum is not a palindrome then repeat the procedure until you get a palindrome
+     */
+
+    public static int addToReverseUntilPalindrome(int input) {
+        if (input == 0) {
+            return input;
+        }
+        int temp = input;
+        int digit = 0;
+        int reverse = 0;
+        while (temp > 0) {
+            digit = temp % 10;
+            reverse = (reverse * 10) + digit;
+            temp = temp / 10;
+        }
+        return input;
+
+    }
+
 }

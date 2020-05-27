@@ -404,7 +404,6 @@ public class ArrayManipulation {
         return result;
     }
 
-    //========
     //Write a java program to separate Number X from other numbers in the given array. You have to move X either
     // to end of the array or bring them to beginning of the array. For example, if x is 22 and
     // if {0, 10, 0, 22, 45, 22, 0, 100, 0, 22} is the given array,
@@ -445,6 +444,30 @@ public class ArrayManipulation {
             }
         }
         return result;
+    }
+
+
+// ====================== How to find all the leaders in an integer array in java? ================================
+    /*
+        An element is said to be a leader if all the elements on it’s right side are smaller than it.
+        Rightmost element is always a leader. For example, if {14, 9, 11, 7, 8, 5, 3} is the given array
+        then {14, 11, 8, 5, 3} are the leaders in this array.
+     */
+
+    public static List<Integer> getLeaderNumbers(int[] inputArr) {
+        List<Integer> leaders = new ArrayList<>();
+        for (int i = 0; i < inputArr.length; i++) {
+            if (i == inputArr.length - 1) {
+                leaders.add(inputArr[i]);
+                continue;
+            }
+            if (inputArr[i] > inputArr[i + 1]) {
+                leaders.add(inputArr[i]);
+            }
+
+        }
+        return leaders;
+
     }
 }
 

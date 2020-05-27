@@ -23,7 +23,10 @@ public class StringManipulationTest {
         executionTime(time);
         startTime();
         startTime();
-        Assertions.assertEquals("navedahas lihas", reverseUsingLoopIteration("Sahil Sahadevan").toLowerCase());
+        Assertions.assertEquals("navedahas lihas", reverseUsingLoopIteration1("Sahil Sahadevan"));
+        executionTime(time);
+        startTime();
+        Assertions.assertEquals("navedahas lihas", reverseUsingLoopIteration2("Sahil Sahadevan"));
         executionTime(time);
         Assertions.assertEquals("navedahas lihas", reverseUsingStringBuilder("Sahil Sahadevan").toLowerCase());
         executionTime(time);
@@ -32,7 +35,7 @@ public class StringManipulationTest {
 
 
     @Test
-    public void removeAllWhiteSpaceUsingRegexTest(){
+    public void removeAllWhiteSpaceUsingRegexTest() {
         startTime();
         removeAllWhiteSpaceUsingRegex("         THis had a lot of un even w   hit es paces         ");
         executionTime(time);
@@ -60,14 +63,23 @@ public class StringManipulationTest {
         Assertions.assertFalse(checkIfAnagramUsingIterations("Sis is sisi", "iiiiiiiss"));
     }
 
-
-
-
+    @Test
+    public void test() {
+        String check = "This is America";
+        StringBuilder string1 = new StringBuilder();
+        StringBuilder string2 = new StringBuilder();
+        for (char i : check.toCharArray()) {
+            string1.append(i);
+            string2.insert(0, i);
+        }
+        log.info("Orig = '{}', string1 = '{}', string2 = '{}'", check, string1, string2);
+    }
 
     // FOR TIME TRACKING
     public void startTime() {
         time = System.currentTimeMillis();
     }
+
     public void executionTime(long startTime) {
         log.info("ExecutionTime is {} milliseconds", System.currentTimeMillis() - startTime);
     }
