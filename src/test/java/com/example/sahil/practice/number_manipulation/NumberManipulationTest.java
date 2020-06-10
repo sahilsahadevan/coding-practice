@@ -28,6 +28,27 @@ public class NumberManipulationTest {
     }
 
     @Test
+    public void getNumberOfDigitsTest() {
+        Assertions.assertEquals(4, getNumberOfDigits(1234));
+        Assertions.assertEquals(1, getNumberOfDigits(1));
+        Assertions.assertEquals(1, getNumberOfDigits(0));
+        Assertions.assertEquals(1, getNumberOfDigits(7));
+        Assertions.assertEquals(2, getNumberOfDigits(43));
+
+    }
+
+    @Test
+    public void getFloorOfNumTest() {
+        Assertions.assertEquals(1000, getFloorOfNumber(1234));
+        Assertions.assertEquals(1, getFloorOfNumber(1));
+        Assertions.assertEquals(1, getFloorOfNumber(0));
+        Assertions.assertEquals(1, getFloorOfNumber(7));
+        Assertions.assertEquals(10, getFloorOfNumber(43));
+        Assertions.assertEquals(10000, getFloorOfNumber(35672));
+
+    }
+
+    @Test
     public void checkIfArmstrongNumberTest() {
         long time = System.currentTimeMillis();
         Assertions.assertTrue(isArmstrongNumberUsingIteration(153));
@@ -56,43 +77,22 @@ public class NumberManipulationTest {
 
     @Test
     public void getNextLargestNumberWithoutGivenDigitTest() {
-        long time = System.currentTimeMillis();
-        log.info("StartTime is {}", time);
         log.info("{}", getNextLargestNumberWithoutGivenDigitUsingRecursive(1114, 4));
+        Assertions.assertEquals(999, getNextLargestNumberWithoutGivenDigitUsingRecursive(1000, 1));
         Assertions.assertEquals(1113, getNextLargestNumberWithoutGivenDigitUsingRecursive(1114, 4));
-        executionTime(time);
-        time = System.currentTimeMillis();
-        log.info("StartTime is {}", time);
+        Assertions.assertEquals(1113, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(1114, 4));
+        Assertions.assertEquals(1113, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration(1114, 4));
         Assertions.assertEquals(2299,getNextLargestNumberWithoutGivenDigitUsingRecursive(2345, 3));
-        executionTime(time);
-        time = System.currentTimeMillis();
-        log.info("StartTime is {}", time);
+        Assertions.assertEquals(2299, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(2345, 3));
         Assertions.assertEquals(2999,getNextLargestNumberWithoutGivenDigitUsingRecursive(3311, 3));
-        executionTime(time);
-        time = System.currentTimeMillis();
-        log.info("StartTime is {}", time);
+        Assertions.assertEquals(2999, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(3311, 3));
         Assertions.assertEquals(999,getNextLargestNumberWithoutGivenDigitUsingRecursive(1110, 0));
-        executionTime(time);
-        time = System.currentTimeMillis();
-        log.info("StartTime is {}", time);
+        Assertions.assertEquals(999, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(1110, 0));
+        Assertions.assertEquals(999, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration(1110, 0));
         Assertions.assertEquals(999,getNextLargestNumberWithoutGivenDigitUsingRecursive(1110, 1));
-        executionTime(time);
-    }
-
-    @Test
-    public void isBinaryTest() {
-        Assertions.assertTrue(isBinary(11101110000L));
-        Assertions.assertTrue(isBinary(11100));
-        Assertions.assertTrue(isBinary(1111111111111L));
-        Assertions.assertTrue(isBinary(1111));
-        Assertions.assertTrue(isBinary(0));
-        Assertions.assertTrue(isBinary(111011L));
-        Assertions.assertFalse(isBinary(12));
-        Assertions.assertFalse(isBinary(121111111L));
-        Assertions.assertFalse(isBinary(1239187902L));
-        Assertions.assertFalse(isBinary(42L));
-
-
+        Assertions.assertEquals(999, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(1110, 1));
+        Assertions.assertEquals(888,getNextLargestNumberWithoutGivenDigitUsingRecursive(999, 9));
+        Assertions.assertEquals(888, getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(999, 9));
     }
 
     @Test
@@ -140,8 +140,41 @@ public class NumberManipulationTest {
 
     @Test
     public void addToReverseUntilPalindromeTest() {
-        Assertions.assertEquals(5231, addToReverseUntilPalindrome(1325));
-        Assertions.assertEquals(25, addToReverseUntilPalindrome(52));
+        Assertions.assertEquals(497794, addToReverseUntilPalindromeUsingRecursive(7325));
+        Assertions.assertEquals(497794, addToReverseUntilPalindromeUsingLogicalIteration(7325));
+        Assertions.assertEquals(6556, addToReverseUntilPalindromeUsingRecursive(1325));
+        Assertions.assertEquals(6556, addToReverseUntilPalindromeUsingLogicalIteration(1325));
+        Assertions.assertEquals(55, addToReverseUntilPalindromeUsingRecursive(7));
+        Assertions.assertEquals(55, addToReverseUntilPalindromeUsingLogicalIteration(7));
+
+    }
+
+    @Test
+    public void getRomanNumeralsTest() {
+        Assertions.assertEquals("MMMDXLII",convertToRomanNumerals(3542));
+        Assertions.assertEquals("MMMDXLII", convertToRomanNumeralsUsingTreeMapAndRecursive(3542));
+        Assertions.assertEquals("XX",convertToRomanNumerals(20));
+        Assertions.assertEquals("XX", convertToRomanNumeralsUsingTreeMapAndRecursive(20));
+        Assertions.assertEquals("XL",convertToRomanNumerals(40));
+        Assertions.assertEquals("XL", convertToRomanNumeralsUsingTreeMapAndRecursive(40));
+        Assertions.assertEquals("XLI",convertToRomanNumerals(41));
+        Assertions.assertEquals("XLI", convertToRomanNumeralsUsingTreeMapAndRecursive(41));
+        Assertions.assertEquals("L",convertToRomanNumerals(50));
+        Assertions.assertEquals("L", convertToRomanNumeralsUsingTreeMapAndRecursive(50));
+        Assertions.assertEquals("LI",convertToRomanNumerals(51));
+        Assertions.assertEquals("LI", convertToRomanNumeralsUsingTreeMapAndRecursive(51));
+        Assertions.assertEquals("LXVII",convertToRomanNumerals(67));
+        Assertions.assertEquals("LXVII", convertToRomanNumeralsUsingTreeMapAndRecursive(67));
+        Assertions.assertEquals("XCVIII",convertToRomanNumerals(98));
+        Assertions.assertEquals("XCVIII", convertToRomanNumeralsUsingTreeMapAndRecursive(98));
+        Assertions.assertEquals("XCIX",convertToRomanNumerals(99));
+        Assertions.assertEquals("XCIX", convertToRomanNumeralsUsingTreeMapAndRecursive(99));
+        Assertions.assertEquals("DCCLXXX",convertToRomanNumerals(780));
+        Assertions.assertEquals("DCCLXXX", convertToRomanNumeralsUsingTreeMapAndRecursive(780));
+        Assertions.assertEquals("DXLI",convertToRomanNumerals(541));
+        Assertions.assertEquals("DXLI", convertToRomanNumeralsUsingTreeMapAndRecursive(541));
+        Assertions.assertEquals("I",convertToRomanNumerals(1));
+        Assertions.assertEquals("I", convertToRomanNumeralsUsingTreeMapAndRecursive(1));
 
     }
 

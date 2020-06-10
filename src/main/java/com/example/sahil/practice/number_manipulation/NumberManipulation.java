@@ -32,6 +32,30 @@ public class NumberManipulation {
         return result;
     }
 
+//===========================How to find number of all digits in a given number without using String API =============================
+
+    public static int getNumberOfDigits(int input) {
+        int numOfDigit = 1;
+        int base = 1;
+        while (input >= base * 10) {
+            base = base * 10;
+            numOfDigit++;
+        }
+        return numOfDigit;
+    }
+
+//===========================How to find the floor/base of a given number(e.g 2 is in 1s, 68 is in 10s, 345 is in 100s, 17000 is in 10000s) ================
+
+    //Floor/base of 1, 2, 9 etc. is 1, Floor/base of 12, 45, 99 etc is 10, Floor/base of 5789, 9999, 1000 is 1000 etc.
+
+    public static int getFloorOfNumber(int input) {
+        int base = 1;
+        while (input >= base * 10) {
+            base = base * 10;
+        }
+        return base;
+    }
+
 //=========================== Armstrong number program in java  =============================================
     //e.g 153 = 1^3 + 5^3 + 3^3
 
@@ -89,7 +113,7 @@ public class NumberManipulation {
         }
         int base = 1;
         //To check the base of the number -> 1, 10, 1000, 10000 etc. e.g.: 345 is in 100s , 12345 is in 10000s.
-        while (input > base * 10) {
+        while (input >= base * 10) {
             base = base * 10;
         }
         int diff = input;
@@ -107,7 +131,67 @@ public class NumberManipulation {
         return getNextLargestNumberWithoutGivenDigitUsingRecursive(input - diff, givenDigit);
     }
 
-    public static int getNextLargestNumberWithoutGivenDigitUsingIteration(int input, int givenDigit) {
+    // Best iterative solution
+    public static int getNextLargestNumberWithoutGivenDigitUsingLogicalIteration(int input, int givenDigit) {
+        int result = input;
+        while (String.valueOf(result).contains(String.valueOf(givenDigit))) {
+            int base = 1;
+            //To check the base of the number -> 1, 10, 1000, 10000 etc. e.g.: 345 is in 100s , 12345 is in 10000s.
+            while (input >= base * 10) {
+                base = base * 10;
+            }
+
+            int diff = 0;
+            int temp = result;
+            //To check each decimal position of the number starting from the highest.
+            // by logic : second largest number to, say 1456, without 4 , would be = 1456 - (1456 % 100 + 1)
+            while (temp >= 0) {
+                int floor = temp / base * base;
+                if (givenDigit == floor / base) {
+                    diff = (temp - floor) + 1;
+                    break;
+                }
+                temp = temp - floor;
+                base = base / 10;
+            }
+            result = result - diff;
+        }
+        return result;
+    }
+
+
+    // Using ForLoop  - Not an elegant iterative solution in this case
+    public static int getNextLargestNumberWithoutGivenDigitUsingLogicalIteration2(int input, int givenDigit) {
+        int result = input;
+        while (String.valueOf(result).contains(String.valueOf(givenDigit))) {
+            //To check for the excluding number at base 1.
+            if (input % 10 == givenDigit) {
+                input = input - 1;
+            }
+            int base = 1;
+
+            //To check the base of the number -> 1, 10, 1000, 10000 etc. e.g.: 345 is in 100s , 12345 is in 10000s.
+            while (input >= base * 10) {
+                base = base * 10;
+            }
+            int diff = result;
+
+            //To check each decimal position of the number starting from the highest.
+            // by logic : second largest number to, say 1456, without 4 , would be = 1456 - (1456 % 100 + 1)
+            for (int i = base; i > 0; i /= 10) {
+                int digit = diff / i;
+                if (digit == givenDigit) {
+                    diff = diff % i + 1;
+                    break;
+                }
+                diff = diff % i;
+            }
+            result = result - diff;
+        }
+        return result;
+    }
+
+    public static int getNextLargestNumberWithoutGivenDigitUsingBruteForceIteration(int input, int givenDigit) {
         for (int i = input; i > 0; i--) {
             if (!String.valueOf(i).contains(String.valueOf(givenDigit))) {
                 return i;
@@ -118,19 +202,6 @@ public class NumberManipulation {
 
     public static int test(int input, int givenDigit) {
         return String.valueOf(input).lastIndexOf(givenDigit);
-    }
-
-//================ How to check whether given number is binary or not? ==========================================
-
-
-    public static boolean isBinary(long input) {
-        char[] inputChar = String.valueOf(input).toCharArray();
-        for (char i : inputChar) {
-            if (i != '0' && i != '1') {
-                return false;
-            }
-        }
-        return true;
     }
 
 
@@ -216,20 +287,108 @@ public class NumberManipulation {
         If the sum is not a palindrome then repeat the procedure until you get a palindrome
      */
 
-    public static int addToReverseUntilPalindrome(int input) {
+    public static int addToReverseUntilPalindromeUsingRecursive(int input) {
         if (input == 0) {
             return input;
         }
-        int temp = input;
-        int digit = 0;
-        int reverse = 0;
-        while (temp > 0) {
-            digit = temp % 10;
-            reverse = (reverse * 10) + digit;
-            temp = temp / 10;
-        }
-        return input;
 
+        int sum = input + getReverse(input);
+        if (sum == getReverse(sum)) {
+            return sum;
+        }
+        return addToReverseUntilPalindromeUsingRecursive(sum);
     }
+
+    public static int addToReverseUntilPalindromeUsingLogicalIteration(int input) {
+        if (input == 0) {
+            return input;
+        }
+        int sum = input + getReverse(input);
+        while (sum != getReverse(sum)) {
+            sum = sum + getReverse(sum);
+        }
+        return sum;
+    }
+
+    // reverse of a number.
+    public static int getReverse(int input) {
+        int reverse = 0;
+        while (input > 0) {
+            int digit = input % 10;
+            reverse = (reverse * 10) + digit;
+            input = input / 10;
+        }
+        return reverse;
+    }
+
+//================== Roman equivalent of a decimal number ====================================
+
+    // == Using Iteration ===
+    public static String convertToRomanNumerals(int input) {
+        int base = 1;
+        while (input >= base * 10) {
+            base = base * 10;
+        }
+        StringBuilder romanNumber = new StringBuilder();
+        while (input > 0) {
+            // Floor would be near multiples of 10s (for 2 digits), 100s(3 digits) or 1000s(for 4 digits)
+            // e.g nearestFloor for 3452 is 3000
+            int nearestFloor = input / base * base;
+            romanNumber.append(getRomanNumeral(nearestFloor, base));
+            input = input - nearestFloor;
+            base = base / 10;
+        }
+        return romanNumber.toString();
+    }
+
+    private static String getRomanNumeral(int input, int base) {
+        Map<Integer, String> romanMap = new HashMap<>();
+        romanMap.put(1, "I");
+        romanMap.put(4, "IV");
+        romanMap.put(5, "V");
+        romanMap.put(9, "IX");
+        romanMap.put(10, "X");
+        romanMap.put(40, "XL");
+        romanMap.put(50, "L");
+        romanMap.put(90, "XC");
+        romanMap.put(100, "C");
+        romanMap.put(400, "CD");
+        romanMap.put(500, "D");
+        romanMap.put(900, "CM");
+        romanMap.put(1000, "M");
+        StringBuilder romanOnes = new StringBuilder();
+        for (int i = input; i > 0; i -= base) {
+            if (romanMap.containsKey(i)) {
+                return romanMap.get(i) + romanOnes.toString();
+            }
+            romanOnes.append(romanMap.get(base));
+        }
+        return "";
+    }
+
+    // == Using Recursive ===
+    public static String convertToRomanNumeralsUsingTreeMapAndRecursive(int input) {
+        TreeMap<Integer, String> romanMap = new TreeMap<>();
+        romanMap.put(1, "I");
+        romanMap.put(4, "IV");
+        romanMap.put(5, "V");
+        romanMap.put(9, "IX");
+        romanMap.put(10, "X");
+        romanMap.put(40, "XL");
+        romanMap.put(50, "L");
+        romanMap.put(90, "XC");
+        romanMap.put(100, "C");
+        romanMap.put(400, "CD");
+        romanMap.put(500, "D");
+        romanMap.put(900, "CM");
+        romanMap.put(1000, "M");
+        int floorKey = romanMap.floorKey(input);
+        if (input == floorKey) {
+            return romanMap.get(input);
+        }
+        return romanMap.get(floorKey) + convertToRomanNumeralsUsingTreeMapAndRecursive(input - floorKey);
+    }
+
+
 
 }

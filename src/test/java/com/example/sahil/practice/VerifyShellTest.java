@@ -1,11 +1,9 @@
 package com.example.sahil.practice;
 
-import com.example.sahil.practice.array_manipulation.ArrayManipulationTest;
+import com.example.sahil.practice.data_structures_and_algorithms.ArrayManipulationTest;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static com.example.sahil.practice.VerifyShell.*;
 
 public class VerifyShellTest {
     private final Logger log = LoggerFactory.getLogger(ArrayManipulationTest.class);

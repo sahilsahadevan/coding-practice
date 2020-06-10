@@ -3,6 +3,8 @@ package com.example.sahil.practice.string_manipulation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -63,6 +65,34 @@ public class StringManipulation {
         return new String(inputStringBuilder);
     }
 
+//================= QUESTION : REVERSE A STRING WITH PRESERVING THE POSITION OF SPACES ============================
+    /*
+        Input = "I am Sahil Sahadevan"
+        output = "n av edaha SlihaSmaI"
+
+        Note how the space position is same in reverse as in the original String
+     */
+
+    public static String reverseWhilePreservingSpace(String inputStr) {
+        char[] inputStrArr = inputStr.toCharArray();
+        char[] reverseChar = new char[inputStrArr.length];
+        for (int i = 0; i < inputStrArr.length; i++) {
+            if (inputStrArr[i] == ' ') {
+                reverseChar[i] = inputStrArr[i];
+            }
+        }
+        int j = inputStrArr.length - 1;
+        for (char c : inputStrArr) {
+            if (c != ' ') {
+                if (reverseChar[j] == ' ') {
+                    j--;
+                }
+                reverseChar[j] = c;
+                j--;
+            }
+        }
+        return String.valueOf(reverseChar);
+    }
 
 //================= QUESTION : HOW TO REMOVE WHITESPEACES ============================
     /*
@@ -178,5 +208,41 @@ public class StringManipulation {
         log.info("{} : {}", phrase1Arr, phrase2Arr);
         log.info("{} : {}", phrase1Counter, phrase2Counter);
         return isAnagram.get();
+    }
+
+
+//================= percentage of uppercase, lowercase, digits and special characters in a string =============
+//Write a java program to find the percentage of uppercase letters, lowercase letters, digits and
+// other special characters(including space) in the given string
+
+    public static void measureCharsInString(String input) {
+        char[] inputChar = input.toCharArray();
+        BigDecimal smallChars = BigDecimal.valueOf(0, 2);
+        BigDecimal largeChars = BigDecimal.valueOf(0, 2);
+        BigDecimal digitChars = BigDecimal.valueOf(0, 2);
+        BigDecimal specialChars = BigDecimal.valueOf(0, 2);
+        BigDecimal totalChars = BigDecimal.valueOf(input.length(), 2);
+        for (char eachChar : inputChar) {
+            if (Character.isLetterOrDigit(eachChar)) {
+                if (Character.isDigit(eachChar)) {
+                    digitChars = digitChars.add(new BigDecimal("1"));
+                } else if (Character.isUpperCase(eachChar)) {
+                    largeChars = largeChars.add(new BigDecimal("1"));
+                } else {
+                    smallChars = smallChars.add(new BigDecimal("1"));
+                }
+            } else {
+                specialChars = specialChars.add(new BigDecimal("1"));
+            }
+        }
+        // No need to multiply by 100 for percentage since scaling with rounding mode 2 takes care of it in Bigdecimals
+        log.info("There are {}% of smallChars (count is {}) in input '{}' (Total chars are {})",
+                smallChars.divide(totalChars,2), smallChars.toBigInteger(), input, input.length());
+        log.info("There are {}% of largeChars (count is {}) in input '{}' (Total chars are {})",
+                largeChars.divide(totalChars,2), largeChars.toBigInteger(), input, input.length());
+        log.info("There are {}% of digitChars (count is {}) in input '{}' (Total chars are {})",
+                digitChars.divide(totalChars,2), digitChars.toBigInteger(), input, input.length());
+        log.info("There are {}% of specialChars (count is {}) in input '{}' (Total chars are {})",
+                specialChars.divide(totalChars,2), specialChars.toBigInteger(), input, input.length());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.sahil.practice.array_manipulation;
+package com.example.sahil.practice.data_structures_and_algorithms;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static com.example.sahil.practice.array_manipulation.ArrayManipulation.*;
+import static com.example.sahil.practice.data_structures_and_algorithms.ArrayManipulation.*;
 
 
 public class ArrayManipulationTest {

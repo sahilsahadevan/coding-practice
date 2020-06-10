@@ -1,4 +1,4 @@
-package com.example.sahil.practice.array_manipulation;
+package com.example.sahil.practice.data_structures_and_algorithms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +53,6 @@ public class ArrayManipulation {
 
     // Check if array 1 and array 2 has same entries in the exact same order
     // === e.g {1, 2, 3} == {1, 2, 3},  {1, 2, 3} != {3, 1, 2},  {1, 2, 3} != {1, 2}
-
-
     public static boolean exactCompareArraysUsingIteration(String[] array1, String[] array2, boolean isCaseSensitive) {
         if (null == array1 || null == array2 || Arrays.asList(array1.length, array2.length).contains(0)) {
             return false;

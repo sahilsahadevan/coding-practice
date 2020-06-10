@@ -13,6 +13,20 @@ public class NumberBaseManipulationTest {
 
 
     @Test
+    public void isBinaryTest() {
+        Assertions.assertTrue(isBinary(11101110000L));
+        Assertions.assertTrue(isBinary(11100));
+        Assertions.assertTrue(isBinary(1111111111111L));
+        Assertions.assertTrue(isBinary(1111));
+        Assertions.assertTrue(isBinary(0));
+        Assertions.assertTrue(isBinary(111011L));
+        Assertions.assertFalse(isBinary(12));
+        Assertions.assertFalse(isBinary(121111111L));
+        Assertions.assertFalse(isBinary(1239187902L));
+        Assertions.assertFalse(isBinary(42L));
+    }
+
+    @Test
     public void getBinaryIntUsingSimpleMathTest() {
         log.info("Expected={}, Actual={}", Integer.toBinaryString(4), getBinaryIntFromDecimalUsingSimpleMath(4));
         log.info("Expected={}, Actual={}", Integer.toBinaryString(-4), getBinaryIntFromDecimalUsingSimpleMath(-4));
@@ -66,6 +80,14 @@ public class NumberBaseManipulationTest {
         log.info("Expected={}, Actual={}", Integer.toHexString(17), getHexadecimalFromDecimal(17));
         //log.info("Expected={}, Actual={}", Integer.toHexString(-17), getHexadecimalFromDecimal(-17));
         Assertions.assertEquals("11",  getHexadecimalFromDecimal(17));
+
+        log.info("Expected={}, Actual={}", Integer.toHexString(127), getHexadecimalFromDecimal(127));
+        //log.info("Expected={}, Actual={}", Integer.toHexString(-17), getHexadecimalFromDecimal(-17));
+        Assertions.assertEquals("7f",  getHexadecimalFromDecimal(127));
+
+        log.info("Expected={}, Actual={}", Integer.toHexString(255), getHexadecimalFromDecimal(255));
+        //log.info("Expected={}, Actual={}", Integer.toHexString(-17), getHexadecimalFromDecimal(-17));
+        Assertions.assertEquals("ff",  getHexadecimalFromDecimal(255));
 
     }
 

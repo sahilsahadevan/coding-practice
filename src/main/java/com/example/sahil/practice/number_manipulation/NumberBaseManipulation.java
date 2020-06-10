@@ -9,6 +9,19 @@ public class NumberBaseManipulation {
 
     private static final Logger log = LoggerFactory.getLogger(NumberBaseManipulation.class);
 
+//================ How to check whether given number is binary or not? ==========================================
+
+
+    public static boolean isBinary(long input) {
+        char[] inputChar = String.valueOf(input).toCharArray();
+        for (char i : inputChar) {
+            if (i != '0' && i != '1') {
+                return false;
+            }
+        }
+        return true;
+    }
+
 // ============================= Decimal To Binary, and Vice Versa ===================
 
     /*

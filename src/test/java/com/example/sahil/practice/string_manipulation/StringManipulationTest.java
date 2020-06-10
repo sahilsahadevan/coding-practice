@@ -14,7 +14,7 @@ public class StringManipulationTest {
     private final Logger log = LoggerFactory.getLogger(StringManipulationTest.class);
 
     @Test
-    public void reverseWithRecursionTest() {
+    public void reverseStringTest() {
         startTime();
         Assertions.assertEquals("navedahas lihas", reverseUsingRecursive1("Sahil Sahadevan").toLowerCase());
         executionTime(time);
@@ -33,8 +33,14 @@ public class StringManipulationTest {
 
     }
 
-
     @Test
+    public void reverseStringWhilePreservingSpaceTest() {
+        Assertions.assertEquals("naved ahaSlihaS", reverseWhilePreservingSpace("Sahil Sahadevan"));
+        Assertions.assertEquals("n av edaha SlihaSmaI", reverseWhilePreservingSpace("I am Sahil Sahadevan"));
+
+    }
+
+        @Test
     public void removeAllWhiteSpaceUsingRegexTest() {
         startTime();
         removeAllWhiteSpaceUsingRegex("         THis had a lot of un even w   hit es paces         ");
@@ -61,6 +67,11 @@ public class StringManipulationTest {
         Assertions.assertFalse(checkIfAnagramUsingIterations("shabbath", "Bath Abss"));
         Assertions.assertFalse(checkIfAnagramUsingArraysUtils("Sis is sisi", "iiiiiiiss"));
         Assertions.assertFalse(checkIfAnagramUsingIterations("Sis is sisi", "iiiiiiiss"));
+    }
+
+    @Test
+    public void measurePercentageOfCharsInString() {
+        measureCharsInString("This is Test no. 12345 ");
     }
 
     @Test
