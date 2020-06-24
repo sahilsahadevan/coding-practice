@@ -7,7 +7,7 @@
         <encoder>
             <!-- <Pattern>%d{HH:mm:ss.SSS} %blue(%-5level) %magenta(%logger{36}) - %msg %n</Pattern> -->
             <!-- I want to print just the message for now -->
-            <Pattern>%msg %n</Pattern>
+            <Pattern>%d{HH:mm:ss.SSS} - %msg %n</Pattern>
         </encoder>
     </appender>
 

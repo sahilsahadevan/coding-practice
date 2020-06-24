@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -245,4 +244,13 @@ public class StringManipulation {
         log.info("There are {}% of specialChars (count is {}) in input '{}' (Total chars are {})",
                 specialChars.divide(totalChars,2), specialChars.toBigInteger(), input, input.length());
     }
+
+//=============================== Java program to prove strings are immutable in java =================
+
+    public static boolean checkIfImmutable(String inputStr){
+        int length = inputStr.length();
+        inputStr.concat(" If this is mutable, then this Should add more String Length");
+        return (inputStr.length() == length);
+    }
+
 }

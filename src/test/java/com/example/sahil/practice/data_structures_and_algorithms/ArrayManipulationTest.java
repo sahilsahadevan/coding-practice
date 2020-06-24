@@ -5,10 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static com.example.sahil.practice.data_structures_and_algorithms.ArrayManipulation.*;
 
@@ -300,8 +297,8 @@ public class ArrayManipulationTest {
     public void getArrayIntersectionTest() {
         String[] arr1 = new String[]{"Sahil", "Varsha", "Sagil", "Mummy", "Papa"};
         String[] arr2 = new String[]{"Mummy", "Papa"};
-        Assertions.assertEquals("[Mummy, Papa]", getArrayIntersectionUsingUtils(arr1,arr2).toString());
-        Assertions.assertEquals("[Mummy, Papa]", getArrayIntersectionUsingIteration(arr1,arr2).toString());
+        Assertions.assertEquals("[Mummy, Papa]", getArrayIntersectionUsingUtils(arr1, arr2).toString());
+        Assertions.assertEquals("[Mummy, Papa]", getArrayIntersectionUsingIteration(arr1, arr2).toString());
     }
 
     @Test
@@ -336,10 +333,29 @@ public class ArrayManipulationTest {
     }
 
     @Test
-    public void getLeaderNumberTest(){
-        int[] input1 = new int[]{0, 10, 45 , 22, 41, 0, 0, 100, 95, 5};
+    public void getLeaderNumberTest() {
+        int[] input1 = new int[]{0, 10, 45, 22, 41, 0, 0, 100, 95, 5};
         log.info("{}", getLeaderNumbers(input1));
         Assertions.assertEquals("[45, 41, 100, 95, 5]", getLeaderNumbers(input1).toString());
+    }
+
+    @Test
+    public void findMissingNumTest() {
+        int[] input1 = new int[]{3, 4, 7, 6, 5, 1, 8};
+        int[] input2 = new int[]{3, 4, 7, 2, 6, 5, 1, 8};
+        Assertions.assertEquals("2", findMissingNum(input1));
+        Assertions.assertEquals("All Numbers Present!", findMissingNum(input2));
+    }
+
+    @Test
+    public void convertTheseMultiDArraysToStringTest() {
+        String[][] input1Str = new String[][]{{"A1", "A2", "A3"}, {"B1", "B2", "B3"}};
+        Map<String, String> resultMap = convertTheseMultiDArraysToString(input1Str);
+        log.info("{}", resultMap);
+        Assertions.assertNotEquals("[[A1, A2, A3], [B1, B2, B3]]", resultMap.get("Object.toString()"));
+        Assertions.assertNotEquals("[[A1, A2, A3], [B1, B2, B3]]", resultMap.get("String.valueOf()"));
+        Assertions.assertNotEquals("[[A1, A2, A3], [B1, B2, B3]]", resultMap.get("Arrays.toString()"));
+        Assertions.assertEquals("[[A1, A2, A3], [B1, B2, B3]]", resultMap.get("Arrays.deepToString()"));
     }
 
     // FOR TIME TRACKING

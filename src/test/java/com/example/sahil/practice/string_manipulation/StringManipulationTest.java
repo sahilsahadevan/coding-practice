@@ -40,7 +40,7 @@ public class StringManipulationTest {
 
     }
 
-        @Test
+    @Test
     public void removeAllWhiteSpaceUsingRegexTest() {
         startTime();
         removeAllWhiteSpaceUsingRegex("         THis had a lot of un even w   hit es paces         ");
@@ -70,8 +70,13 @@ public class StringManipulationTest {
     }
 
     @Test
-    public void measurePercentageOfCharsInString() {
+    public void measurePercentageOfCharsInStringTest() {
         measureCharsInString("This is Test no. 12345 ");
+    }
+
+    @Test
+    public void checkIfImmutableTest() {
+        Assertions.assertTrue(checkIfImmutable("I am told this is immutable"));
     }
 
     @Test
@@ -94,5 +99,6 @@ public class StringManipulationTest {
     public void executionTime(long startTime) {
         log.info("ExecutionTime is {} milliseconds", System.currentTimeMillis() - startTime);
     }
+
 
 }
