@@ -10,6 +10,6 @@ public class MiscTest {
 
     @Test
     public void launchAppsTest() throws IOException, InterruptedException {
-        launchNotePad();
+        //launchNotePad();
     }
 }

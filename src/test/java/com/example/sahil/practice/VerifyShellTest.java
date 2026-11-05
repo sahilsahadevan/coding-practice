@@ -9,7 +9,7 @@ public class VerifyShellTest {
     private final Logger log = LoggerFactory.getLogger(ArrayManipulationTest.class);
 
     /*
-       This is a Temperory Test class where my plainText IDE-unsupported code can be verified
+       This is a Temporary Test class where my plainText IDE-unsupported code can be verified
        and validated for syntax and logical errors
      */
 
